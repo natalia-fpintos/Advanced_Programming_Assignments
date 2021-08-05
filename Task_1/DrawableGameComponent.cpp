@@ -2,12 +2,7 @@
 
 
 DrawableGameComponent::DrawableGameComponent(int x, int y) : GameComponent(), x(x), y(y) {
-  // Why do we receive the x and y if we have to set them to 0?
-  // What to we initialise the constants to?
-  x = 0;
-  y = 0;
   direction = Right;
-  srandom(time(nullptr));
 }
 
 void DrawableGameComponent::Draw () {

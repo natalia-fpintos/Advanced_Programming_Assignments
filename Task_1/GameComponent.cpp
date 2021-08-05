@@ -9,6 +9,6 @@ GameComponent::GameComponent() {
 }
 
 void GameComponent::Update(const tm *timeData) {
-    cout << "Game Object id: " << id << endl;
-    cout << "Time of call: " << timeData->tm_hour << ":" << timeData->tm_min << ":" << timeData->tm_sec << endl;
+    cout << "Game Object id: " << id << " - ";
+    cout << "Updated: " << timeData->tm_hour << ":" << timeData->tm_min << ":" << timeData->tm_sec << endl;
 }

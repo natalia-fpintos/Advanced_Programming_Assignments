@@ -12,5 +12,5 @@ private:
     static int instances;
 public:
     GameComponent();
-    void Update(const tm *timeData);
+    virtual void Update(const tm *timeData);
 };
