@@ -27,6 +27,7 @@ void DrawableGameComponent::Draw () {
 void DrawableGameComponent::ChangeDirection() {
   Direction newDirection;
   do {
+    // Pick new random direction different to current
     newDirection = (Direction) ((random() % 4));
   } while (newDirection == direction);
   direction = newDirection;
@@ -35,6 +36,7 @@ void DrawableGameComponent::ChangeDirection() {
 void DrawableGameComponent::Update(const tm *eventTime) {
   GameComponent::Update(eventTime);
 
+  // Update x/y values for current direction
   switch (direction) {
     case Left:
       if (x > 0) {

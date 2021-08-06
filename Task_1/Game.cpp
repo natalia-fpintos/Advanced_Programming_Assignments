@@ -30,10 +30,11 @@ void Game::Run() {
       time(&timeInSeconds);
       const struct tm *timeData = localtime(&timeInSeconds);
 
-      // Update component and sleep for 1s
+      // Update component
       components[j]->Update(timeData);
     }
     cout << "------------------------------------" << endl;
+    // Sleep for 1s
     this_thread::sleep_for(chrono::milliseconds(TICKS_1000MS));
   }
 
