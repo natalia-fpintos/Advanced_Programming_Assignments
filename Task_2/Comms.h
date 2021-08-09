@@ -8,10 +8,8 @@
 #include <iostream>
 
 class Comms {
-private:
-  int port;
-
 protected:
+  int port;
   struct sockaddr_in socketAddress;
   int socketRef;
 
@@ -19,7 +17,7 @@ public:
   Comms(int port);
   void createSocket(int type) throw (CreateSocketException, SetSocketOptionsException);
   void setSocketOpts(int option) throw (SetSocketOptionsException);
-  static enum SocketType {
+  enum SocketType {
     TCP = SOCK_STREAM,
     UDP = SOCK_DGRAM
   };

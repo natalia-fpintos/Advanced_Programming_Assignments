@@ -11,3 +11,11 @@ void Server::bindSocket() throw (BindSocketException) {
     throw BindSocketException(errno);
   }
 }
+
+void Server::listenSocket() throw (ListenSocketException) {
+  int listenResult = listen(socketRef, SOMAXCONN);
+  if (listenResult == -1) {
+    throw ListenSocketException(errno);
+  }
+  std::cout << "Listening on port " << port << std::endl;
+}
