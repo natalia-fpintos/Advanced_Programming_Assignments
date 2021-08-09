@@ -1,8 +1,6 @@
 #include <exception>
 
-using namespace std;
-
-class SetSocketOptionsException: public exception {
+class SetSocketOptionsException: public std::exception {
 private:
   int errorNum;
 

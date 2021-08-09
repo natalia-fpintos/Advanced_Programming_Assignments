@@ -15,9 +15,13 @@ void Comms::createSocket(int type) throw (CreateSocketException, SetSocketOption
     throw CreateSocketException();
   }
 
+  setSocketOpts(SO_REUSEADDR);
+  setSocketOpts(SO_REUSEPORT);
+}
+
+void Comms::setSocketOpts(int option) throw (class SetSocketOptionsException) {
   // Setting socket-level options to allow reuse
-  int option = 1;
-  if (setsockopt(socketRef, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &option, sizeof(option)) == -1) {
+  if (setsockopt(socketRef, SOL_SOCKET, option, &option, sizeof(option)) == -1) {
     throw SetSocketOptionsException(errno);
   }
 }
