@@ -19,3 +19,16 @@ void Server::listenSocket() throw (ListenSocketException) {
   }
   std::cout << "Listening on port " << port << std::endl;
 }
+
+void Server::acceptSocket() throw (AcceptSocketException) {
+  sockaddr_in from;
+  socklen_t clientSocketLength, clientSocketTypeLength;
+  int socketOptions, socket_type;
+  clientSocketTypeLength = sizeof(socket_type);
+  socketOptions = getsockopt(socketRef, SOL_SOCKET, SO_TYPE, (char *)&socket_type, &clientSocketTypeLength);
+  clientSocketLength = sizeof(from);
+  int acceptSocket = accept(socketRef, (sockaddr *)&from, &clientSocketLength);
+  if (acceptSocket == -1) {
+    throw AcceptSocketException(errno);
+  }
+}

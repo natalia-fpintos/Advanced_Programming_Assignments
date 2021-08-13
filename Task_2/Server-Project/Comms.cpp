@@ -25,3 +25,7 @@ void Comms::setSocketOpts(int option) throw (class SetSocketOptionsException) {
     throw SetSocketOptionsException(errno);
   }
 }
+
+void Comms::closeSocket() throw(class CloseSocketException) {
+  close(socketRef);
+}

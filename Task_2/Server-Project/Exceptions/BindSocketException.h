@@ -1,4 +1,3 @@
-
 #include <exception>
 
 class BindSocketException: public std::exception {
