@@ -14,7 +14,7 @@ void Client::connectSocket() throw (ConnectSocketException) {
 
 void Client::sendMsg() throw (SendException) {
   std::string msg = getMessage();
-  if (send(socketRef, &msg, msg.size(), 0) == -1) {
+  if (send(socketRef, msg.c_str(), msg.size() + 1, 0) == -1) {
     throw SendException(errno);
   } else {
     std::cout << "Message sent!" << std::endl;

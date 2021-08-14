@@ -12,6 +12,7 @@ int main () {
     server->bindSocket();
     server->listenSocket();
     server->acceptSocket();
+    server->receiveData();
     #endif
 
     #ifdef CLIENT

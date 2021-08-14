@@ -27,8 +27,19 @@ void Server::acceptSocket() throw (AcceptSocketException) {
   clientSocketTypeLength = sizeof(socket_type);
   socketOptions = getsockopt(socketRef, SOL_SOCKET, SO_TYPE, (char *)&socket_type, &clientSocketTypeLength);
   clientSocketLength = sizeof(from);
-  int acceptSocket = accept(socketRef, (sockaddr *)&from, &clientSocketLength);
-  if (acceptSocket == -1) {
+  clientSocketRef = accept(socketRef, (sockaddr *)&from, &clientSocketLength);
+  if (clientSocketRef == -1) {
     throw AcceptSocketException(errno);
+  }
+}
+
+void Server::receiveData() throw (ReceiveException) {
+  char buff[4096];
+  if (recv(clientSocketRef, buff, sizeof(buff), 0) == -1) {
+    std::cout << errno << std::endl;
+    throw ReceiveException();
+  } else {
+    std::cout << "Message received!" << std::endl;
+    std::cout << buff << std::endl;
   }
 }
