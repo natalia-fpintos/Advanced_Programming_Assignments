@@ -6,13 +6,13 @@
 class Server: public Comms {
 private:
   int clientSocketRef;
+  void sendMsg() throw (SendException);
+  void receiveData(char* buffer, int size) throw (ReceiveException);
 public:
   Server();
   Server(int port);
   void bindSocket() throw (BindSocketException);
   void listenSocket() throw (ListenSocketException);
   void acceptSocket() throw (AcceptSocketException);
-  void sendMsg() throw (SendException);
-  char* receiveData() throw (ReceiveException);
   void startChat() throw(class StartChatException);
 };

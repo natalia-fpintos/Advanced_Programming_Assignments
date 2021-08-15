@@ -21,21 +21,26 @@ void Client::sendMsg() throw (SendException) {
   }
 }
 
-char* Client::receiveData() throw (ReceiveException) {
-  char buff[4096];
-  if (recv(socketRef, buff, sizeof(buff), 0) == -1) {
+void Client::receiveData(char* buffer, int size) throw (ReceiveException) {
+  if (recv(socketRef, buffer, size, 0) == -1) {
     std::cout << errno << std::endl;
     throw ReceiveException();
   } else {
     std::cout << "Message received!" << std::endl;
-    return buff;
   }
 }
 
 void Client::startChat() throw(class StartChatException) {
-  while (1) {
+  while (true) {
     sendMsg();
-    char* data = receiveData();
-    std::cout << data << std::endl;
+    char buffer[BUFFER_SIZE];
+    receiveData(buffer, BUFFER_SIZE);
+    std::cout << buffer << std::endl;
+    if (checkQuit(buffer)) {
+      std::cout << "[CLIENT] Chat terminated" << std::endl;
+      break;
+    }
   }
+
+  closeSocket();
 }

@@ -2,11 +2,12 @@
 #include "Exceptions/ConnectSocketException.h"
 
 class Client: public Comms {
+private:
+  void sendMsg() throw (SendException);
+  void receiveData(char* buffer, int size) throw (ReceiveException);
 public:
   Client();
   Client(int port);
   void connectSocket() throw (ConnectSocketException);
-  void sendMsg() throw (SendException);
-  char* receiveData() throw (ReceiveException);
   void startChat() throw(class StartChatException);
 };
