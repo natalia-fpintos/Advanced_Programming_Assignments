@@ -13,6 +13,7 @@ int main () {
     server->listenSocket();
     server->acceptSocket();
     server->receiveData();
+    server->sendMsg();
     #endif
 
     #ifdef CLIENT
@@ -20,6 +21,7 @@ int main () {
     client->createSocket(Comms::TCP);
     client->connectSocket();
     client->sendMsg();
+    client->receiveData();
     #endif
   } catch (...) {
     std::cout << " Error " << std::endl;

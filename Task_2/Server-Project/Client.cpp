@@ -21,9 +21,13 @@ void Client::sendMsg() throw (SendException) {
   }
 }
 
-std::string Client::getMessage() {
-  std::string userMsg;
-  std::cout << "Please enter a message: ";
-  std::getline(std::cin, userMsg);
-  return userMsg;
+void Client::receiveData() throw (ReceiveException) {
+  char buff[4096];
+  if (recv(socketRef, buff, sizeof(buff), 0) == -1) {
+    std::cout << errno << std::endl;
+    throw ReceiveException();
+  } else {
+    std::cout << "Message received!" << std::endl;
+    std::cout << buff << std::endl;
+  }
 }

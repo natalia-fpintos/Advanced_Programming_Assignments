@@ -2,7 +2,6 @@
 #include "Exceptions/BindSocketException.h"
 #include "Exceptions/ListenSocketException.h"
 #include "Exceptions/AcceptSocketException.h"
-#include "Exceptions/ReceiveException.h"
 
 class Server: public Comms {
 private:
@@ -13,5 +12,6 @@ public:
   void bindSocket() throw (BindSocketException);
   void listenSocket() throw (ListenSocketException);
   void acceptSocket() throw (AcceptSocketException);
+  void sendMsg() throw (SendException);
   void receiveData() throw (ReceiveException);
 };

@@ -29,3 +29,10 @@ void Comms::setSocketOpts(int option) throw (class SetSocketOptionsException) {
 void Comms::closeSocket() throw(class CloseSocketException) {
   close(socketRef);
 }
+
+std::string Comms::getMessage() {
+  std::string userMsg;
+  std::cout << "Please enter a message: ";
+  std::getline(std::cin, userMsg);
+  return userMsg;
+}

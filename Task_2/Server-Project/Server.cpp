@@ -33,6 +33,15 @@ void Server::acceptSocket() throw (AcceptSocketException) {
   }
 }
 
+void Server::sendMsg() throw (SendException) {
+  std::string msg = getMessage();
+  if (send(clientSocketRef, msg.c_str(), msg.size() + 1, 0) == -1) {
+    throw SendException(errno);
+  } else {
+    std::cout << "Message sent!" << std::endl;
+  }
+}
+
 void Server::receiveData() throw (ReceiveException) {
   char buff[4096];
   if (recv(clientSocketRef, buff, sizeof(buff), 0) == -1) {
