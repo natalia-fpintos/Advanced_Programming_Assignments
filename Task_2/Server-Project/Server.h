@@ -13,5 +13,6 @@ public:
   void listenSocket() throw (ListenSocketException);
   void acceptSocket() throw (AcceptSocketException);
   void sendMsg() throw (SendException);
-  void receiveData() throw (ReceiveException);
+  char* receiveData() throw (ReceiveException);
+  void startChat() throw(class StartChatException);
 };

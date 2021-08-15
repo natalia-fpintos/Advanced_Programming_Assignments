@@ -7,5 +7,6 @@ public:
   Client(int port);
   void connectSocket() throw (ConnectSocketException);
   void sendMsg() throw (SendException);
-  void receiveData() throw (ReceiveException);
+  char* receiveData() throw (ReceiveException);
+  void startChat() throw(class StartChatException);
 };

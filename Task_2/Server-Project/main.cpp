@@ -12,16 +12,18 @@ int main () {
     server->bindSocket();
     server->listenSocket();
     server->acceptSocket();
-    server->receiveData();
-    server->sendMsg();
+//    server->receiveData();
+//    server->sendMsg();
+    server->startChat();
     #endif
 
     #ifdef CLIENT
     Client *client = new Client();
     client->createSocket(Comms::TCP);
     client->connectSocket();
-    client->sendMsg();
-    client->receiveData();
+//    client->sendMsg();
+//    client->receiveData();
+    client->startChat();
     #endif
   } catch (...) {
     std::cout << " Error " << std::endl;
