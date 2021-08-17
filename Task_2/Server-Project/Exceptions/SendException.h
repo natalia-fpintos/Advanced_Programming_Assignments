@@ -1,6 +1,6 @@
-#include <exception>
+#include "ExceptionWithMessage.h"
 
-class SendException: public std::exception {
+class SendException: public ExceptionWithMessage {
 private:
   int errorNum;
 

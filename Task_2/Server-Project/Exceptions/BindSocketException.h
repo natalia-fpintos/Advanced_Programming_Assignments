@@ -1,6 +1,6 @@
-#include <exception>
+#include "ExceptionWithMessage.h"
 
-class BindSocketException: public std::exception {
+class BindSocketException: public ExceptionWithMessage {
 private:
   int errorNum;
 

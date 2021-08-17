@@ -17,7 +17,7 @@ std::string Client::sendMsg() throw (SendException) {
   if (send(socketRef, msg.c_str(), msg.size() + 1, 0) == -1) {
     throw SendException(errno);
   } else {
-    std::cout << "Message sent!" << std::endl;
+    std::cout << "(Sent)" << std::endl;
   }
   return msg;
 }
@@ -27,7 +27,7 @@ void Client::receiveData(char* buffer, int size) throw (ReceiveException) {
     std::cout << errno << std::endl;
     throw ReceiveException();
   } else {
-    std::cout << "Message received!" << std::endl;
+    std::cout << "Message from server: " << std::endl;
   }
 }
 

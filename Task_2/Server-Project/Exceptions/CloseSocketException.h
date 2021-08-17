@@ -1,6 +1,6 @@
-#include <exception>
+#include "ExceptionWithMessage.h"
 
-class CloseSocketException: public std::exception {
+class CloseSocketException: public ExceptionWithMessage {
 private:
   int errorNum;
 

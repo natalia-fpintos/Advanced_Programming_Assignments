@@ -1,6 +1,6 @@
-#include <exception>
+#include "ExceptionWithMessage.h"
 
-class SetSocketOptionsException: public std::exception {
+class SetSocketOptionsException: public ExceptionWithMessage {
 private:
   int errorNum;
 

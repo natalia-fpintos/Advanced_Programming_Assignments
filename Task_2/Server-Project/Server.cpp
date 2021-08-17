@@ -38,7 +38,7 @@ std::string Server::sendMsg() throw (SendException) {
   if (send(clientSocketRef, msg.c_str(), msg.size() + 1, 0) == -1) {
     throw SendException(errno);
   } else {
-    std::cout << "Message sent!" << std::endl;
+    std::cout << "(Sent)" << std::endl;
   }
   return msg;
 }
@@ -48,7 +48,7 @@ void Server::receiveData(char* buffer, int size) throw (ReceiveException) {
     std::cout << errno << std::endl;
     throw ReceiveException();
   } else {
-    std::cout << "Message received!" << std::endl;
+    std::cout << "Message from client: ";
   }
 }
 
@@ -68,8 +68,6 @@ void Server::startChat() throw(class StartChatException) {
       std::cout << "[SERVER] Chat terminated" << std::endl;
       break;
     }
-    closeSocket();
   }
-
   closeSocket();
 }
