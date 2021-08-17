@@ -12,13 +12,14 @@ void Client::connectSocket() throw (ConnectSocketException) {
   }
 }
 
-void Client::sendMsg() throw (SendException) {
+std::string Client::sendMsg() throw (SendException) {
   std::string msg = getMessage();
   if (send(socketRef, msg.c_str(), msg.size() + 1, 0) == -1) {
     throw SendException(errno);
   } else {
     std::cout << "Message sent!" << std::endl;
   }
+  return msg;
 }
 
 void Client::receiveData(char* buffer, int size) throw (ReceiveException) {
@@ -30,9 +31,16 @@ void Client::receiveData(char* buffer, int size) throw (ReceiveException) {
   }
 }
 
-void Client::startChat() throw(class StartChatException) {
+void Client::startChat() throw (class StartChatException) {
   while (true) {
-    sendMsg();
+    std::string msg = sendMsg();
+    char msg_str[msg.length() + 1];
+    strcpy(msg_str, msg.c_str());
+    if (checkQuit(msg_str)) {
+      std::cout << "[CLIENT] Chat terminated" << std::endl;
+      break;
+    }
+
     char buffer[BUFFER_SIZE];
     receiveData(buffer, BUFFER_SIZE);
     std::cout << buffer << std::endl;
@@ -41,6 +49,5 @@ void Client::startChat() throw(class StartChatException) {
       break;
     }
   }
-
   closeSocket();
 }

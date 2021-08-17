@@ -6,7 +6,7 @@
 class Server: public Comms {
 private:
   int clientSocketRef;
-  void sendMsg() throw (SendException);
+  std::string sendMsg() throw (SendException);
   void receiveData(char* buffer, int size) throw (ReceiveException);
 public:
   Server();

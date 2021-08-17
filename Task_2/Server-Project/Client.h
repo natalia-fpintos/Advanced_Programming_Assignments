@@ -3,7 +3,7 @@
 
 class Client: public Comms {
 private:
-  void sendMsg() throw (SendException);
+  std::string sendMsg() throw (SendException);
   void receiveData(char* buffer, int size) throw (ReceiveException);
 public:
   Client();

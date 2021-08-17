@@ -7,7 +7,7 @@
 int main () {
   try {
     #ifdef SERVER
-    Server *server = new Server();
+    Server* server = new Server();
     server->createSocket(Comms::TCP);
     server->bindSocket();
     server->listenSocket();
@@ -16,7 +16,7 @@ int main () {
     #endif
 
     #ifdef CLIENT
-    Client *client = new Client();
+    Client* client = new Client();
     client->createSocket(Comms::TCP);
     client->connectSocket();
     client->startChat();

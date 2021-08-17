@@ -37,6 +37,6 @@ std::string Comms::getMessage() {
   return userMsg;
 }
 
-bool Comms::checkQuit(char *msg) {
+bool Comms::checkQuit(char* msg) {
   return strcmp(msg, "QUIT") == 0;
 }

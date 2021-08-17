@@ -18,7 +18,7 @@ protected:
   struct sockaddr_in socketAddress;
   int socketRef;
   std::string getMessage();
-  virtual void sendMsg() throw (SendException) = 0;
+  virtual std::string sendMsg() throw (SendException) = 0;
   virtual void receiveData(char* buffer, int size) throw (ReceiveException) = 0;
 
 public:
