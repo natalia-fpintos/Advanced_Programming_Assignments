@@ -1,4 +1,4 @@
-#define SERVER
+#define CLIENT
 
 #ifdef SERVER
 #include "Server.h"
