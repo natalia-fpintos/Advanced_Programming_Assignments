@@ -1,11 +1,8 @@
 #include "ExceptionWithMessage.h"
 
 class CloseSocketException: public ExceptionWithMessage {
-private:
-  int errorNum;
-
 public:
-  CloseSocketException(int errorNum) : errorNum(errorNum) {}
+  CloseSocketException(int errorNum) : ExceptionWithMessage(errorNum) {}
   virtual const char* what() const throw() {
     return "[ERROR] - Could not close socket";
   }

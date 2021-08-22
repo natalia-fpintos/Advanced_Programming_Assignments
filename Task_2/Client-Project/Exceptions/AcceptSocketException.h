@@ -2,11 +2,8 @@
 
 
 class AcceptSocketException: public ExceptionWithMessage {
-private:
-  int errorNum;
-
 public:
-  AcceptSocketException(int errorNum) : errorNum(errorNum) {}
+  AcceptSocketException(int errorNum) : ExceptionWithMessage(errorNum) {}
   virtual const char* what() const throw() {
     return "[ERROR] - Socket failed to accept connections";
   }

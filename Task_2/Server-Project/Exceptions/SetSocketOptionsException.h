@@ -1,11 +1,8 @@
 #include "ExceptionWithMessage.h"
 
 class SetSocketOptionsException: public ExceptionWithMessage {
-private:
-  int errorNum;
-
 public:
-  SetSocketOptionsException(int errorNum) : errorNum(errorNum) {}
+  SetSocketOptionsException(int errorNum) : ExceptionWithMessage(errorNum) {}
   virtual const char* what() const throw() {
     return "[ERROR] - There was a problem setting the socket options";
   }

@@ -1,11 +1,8 @@
 #include "ExceptionWithMessage.h"
 
 class BindSocketException: public ExceptionWithMessage {
-private:
-  int errorNum;
-
 public:
-  BindSocketException(int errorNum) : errorNum(errorNum) {}
+  BindSocketException(int errorNum) : ExceptionWithMessage(errorNum) {}
   virtual const char* what() const throw() {
     return "[ERROR] - Socket failed to bind";
   }
