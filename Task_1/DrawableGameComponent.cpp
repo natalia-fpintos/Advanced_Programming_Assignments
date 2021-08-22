@@ -48,12 +48,12 @@ void DrawableGameComponent::Update(const tm *eventTime) {
         x += 1;
       }
       break;
-    case Up:
+    case Down:
       if (y > 0) {
         y -= 1;
       }
       break;
-    case Down:
+    case Up:
       if (y < SCREEN_HEIGHT) {
         y += 1;
       }
