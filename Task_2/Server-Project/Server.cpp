@@ -22,10 +22,7 @@ void Server::listenSocket() throw (ListenSocketException) {
 
 void Server::acceptSocket() throw (AcceptSocketException) {
   sockaddr_in from;
-  socklen_t clientSocketLength, clientSocketTypeLength;
-  int socketOptions, socket_type;
-  clientSocketTypeLength = sizeof(socket_type);
-  socketOptions = getsockopt(socketRef, SOL_SOCKET, SO_TYPE, (char *)&socket_type, &clientSocketTypeLength);
+  socklen_t clientSocketLength;
   clientSocketLength = sizeof(from);
   clientSocketRef = accept(socketRef, (sockaddr *)&from, &clientSocketLength);
   if (clientSocketRef == -1) {
