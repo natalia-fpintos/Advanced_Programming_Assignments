@@ -7,7 +7,4 @@ public:
   virtual const char* what() const throw() {
     return "[ERROR] - Socket failed to accept connections";
   }
-  int getError() {
-    return errorNum;
-  }
 };

@@ -6,7 +6,4 @@ public:
   virtual const char* what() const throw() {
     return "[ERROR] - Socket could not listen on port";
   }
-  int getError() {
-    return errorNum;
-  }
 };

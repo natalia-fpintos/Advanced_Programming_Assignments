@@ -6,7 +6,4 @@ public:
   virtual const char* what() const throw() {
     return "[ERROR] - Could not close socket";
   }
-  int getError() {
-    return errorNum;
-  }
 };

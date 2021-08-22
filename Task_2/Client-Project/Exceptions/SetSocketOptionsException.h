@@ -6,7 +6,4 @@ public:
   virtual const char* what() const throw() {
     return "[ERROR] - There was a problem setting the socket options";
   }
-  int getError() {
-    return errorNum;
-  }
 };
